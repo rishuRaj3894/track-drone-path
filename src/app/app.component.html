@@ -1,0 +1,62 @@
+<div width="100%">
+  <h1 class="navbar_brand-logo-wrapper-3">Drone Simulator ft.</h1>
+  <a href="/" aria-current="page" class="navbar_brand-logo-wrapper-3">
+    <img src="https://cdn.prod.website-files.com/6336f32fe0e46462713ad519/6489aab23a300716ea371f21_646c6c9285a2b93646dd41b8_just-flytnow-logo-svg%20(1).svg" loading="lazy" alt="" class="navbar_brand-logo-2">
+    <img src="https://cdn.prod.website-files.com/6336f32fe0e46462713ad519/6489a923c667de324aa11e16_FB-Logo%20White%20copy%205.svg" loading="lazy" alt="" class="navbar_brand-logo-2" style="filter: invert(100%);"></a>
+  <section class="sec-gmap">
+    <div *ngIf="apiLoaded | async">
+      <google-map width="90%"  [options]="mainOptions"
+        (mapClick)="addMarker($event)">
+          <map-marker *ngFor="let markerPosition of markerOptions"
+            [options]="markerPosition">
+          </map-marker>
+          <map-polyline [path]="polyVertices" [options]="polylineOptions"></map-polyline>
+      </google-map>
+    </div>
+
+    <div class="progress-grp">
+      <mat-progress-bar mode="determinate" [value]="progressCount" class="cstm-progress-bar"></mat-progress-bar>
+      <span class="progress-count">{{progressCount}}%</span>
+    </div>
+
+  </section>
+  <section class="sec-a">
+    <form [formGroup]="latLngForm"  (ngSubmit)="onSimulate()">
+
+      <div class="sec-a-1">
+        <mat-form-field class="cstm-input-01">
+          <mat-label>Latitude</mat-label>
+          <input matInput type="number" formControlName="latitude">
+        </mat-form-field>
+
+        <mat-form-field class="cstm-input-01">
+          <mat-label>Longitude</mat-label>
+          <input matInput type="number" formControlName="longitude">
+        </mat-form-field>
+
+        <mat-form-field class="cstm-input-01">
+          <mat-label>Time (sec.)</mat-label>
+          <input matInput type="number" formControlName="time">
+        </mat-form-field>
+
+          <button mat-fab class="simulate-btn" extended color="primary" type="submit" [disabled]="!latLngForm.valid" >
+            Simulate
+          </button>
+      </div>
+
+      <div class="sec-a-2">
+        <button mat-raised-button color="primary" 
+          [disabled]="!latLngForm.disabled || simulatePaused || progressCount >=100"
+          (click)="onPause()">Pause
+        </button>
+        <button mat-raised-button color="primary" 
+          [disabled]="!latLngForm.disabled || !simulatePaused" (click)="onResume()"> Resume
+        </button>
+        <button mat-raised-button color="" 
+          [disabled]="!latLngForm.disabled"(click)="onReset()">Reset
+        </button>
+      </div>
+
+    </form>
+  </section>
+</div>

@@ -1,0 +1,67 @@
+.sec-a {
+    padding-top: 2%;
+    text-align: center;
+    padding-bottom: 2%;
+
+    .sec-a-1 {
+        // padding-bottom: 2%;
+        .cstm-input-01 {
+            // width: 120px;
+            margin-left: 2%;
+            @media (max-width: 600px) {
+                width: 120px;
+            }
+        }
+        .simulate-btn {
+            margin-bottom: 2%;
+            margin-left: 4%;
+        }
+    }
+    .sec-a-2 {
+        // padding-bottom: 2%;
+        button{
+            margin-left: 3%;
+        }
+    }
+}
+
+.sec-gmap {
+    margin-left: 10%;
+    .progress-grp {
+        display: flex; // Use Flexbox for layout
+        align-items: center; // Align items vertically in the center
+        width: 90%;
+        padding-bottom: 1%;
+        .cstm-progress-bar {
+            flex-grow: 1; // Allow the progress bar to take up the remaining space
+            margin-right: 10px; // Add some space between the progress bar and the span
+        }
+    }
+}
+
+.navbar_brand-logo-2{
+    align-self: stretch;
+    /* width: 100%; */
+    height: 100%;
+    max-height: 2rem;
+}
+
+.navbar_brand-logo-2{
+    filter: invert(100%);
+    width: 100%;
+    max-width: 6rem;
+}
+
+.navbar_brand-logo-wrapper-3{
+    display: flex;
+    justify-content: center;
+    grid-column-gap: 4px;
+    grid-row-gap: 4px;
+    align-items: center;
+    float: none;
+    flex: none;
+    margin-right: 2rem;
+    display: flex
+;
+    position: static;
+}
